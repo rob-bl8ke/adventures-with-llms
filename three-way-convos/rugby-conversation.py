@@ -81,10 +81,10 @@ def get_allblack_reply():
     
     messages = []
     
-    for gpt, ollama, claude_message in zip(bok_messages, wallaby_messages, allblack_messages):
-        messages.append({"role":"user", "content":gpt})
-        messages.append({"role": "user", "content": ollama})
-        messages.append({"role":"assistant", "content": claude_message})
+    for bok_reply, wallaby_reply, allblack_reply in zip(bok_messages, wallaby_messages, allblack_messages):
+        messages.append({"role":"user", "content":bok_reply})
+        messages.append({"role": "user", "content": wallaby_reply})
+        messages.append({"role":"assistant", "content": allblack_reply})
     
     messages.append({"role": "user", "content": bok_messages[-1]})
     messages.append({"role": "user", "content": wallaby_messages[-1]})
