@@ -7,6 +7,13 @@
             "request": "launch",
             "program": "${workspaceFolder}/three-way-convos/rugby-conversation.py",
             "envFile": "${workspaceFolder}/three-way-convos/.env"
+        },
+        {
+            "name": "Python: simple-tool-use",
+            "type": "debugpy",
+            "request": "launch",
+            "program": "${workspaceFolder}/simple-tool-use/ticket-price-lookup.py",
+            "envFile": "${workspaceFolder}/simple-tool-use/.env"
         }
     ]
 }
