@@ -60,6 +60,15 @@ In VS Code, prefer the "Black Formatter" extension from Microsoft. Install the e
    - Use the provided `.vscode/launch.json` or run/debug directly from the subfolder.
    - Ensure breakpoints are set and the correct interpreter is selected.
 
+## Debugging with multiple sub-folder venvs
+
+- If you want to debug a file in a different sub-folder with its own venv, you must manually select the correct Python interpreter in VS Code each time you switch projects.
+- Use the Command Palette (`Ctrl+Shift+P`) and select **Python: Select Interpreter**. Pick the interpreter from the sub-folder's venv (e.g., `subfolder/venv/Scripts/python.exe`).
+- VS Code does not automatically switch interpreters based on the file or folder being debugged.
+- For frequent switching, consider using VS Code's multi-root workspace feature, which allows each folder to have its own interpreter setting.
+
+> Note: The `pythonPath` property in `launch.json` is deprecated. Always use the interpreter selection method above for reliable debugging and package resolution.
+
 ## Setting environment variables for API keys
 
 - Create a `.env` file in your subfolder (e.g., `three-way-convos/.env`) and add your API key:
@@ -75,6 +84,17 @@ In VS Code, prefer the "Black Formatter" extension from Microsoft. Install the e
 ## Troubleshooting
 - If you see `ModuleNotFoundError`, make sure your virtual environment is activated and VS Code is using the correct interpreter.
 - You can always check which interpreter is active in the bottom left of VS Code.
+
+## Possible future TODO: Use VS Code multi-root workspace for multiple venvs
+
+If you have several sub-projects, each with its own venv, consider using VS Code's multi-root workspace feature:
+
+1. Go to **File > Add Folder to Workspace...** and add each sub-project folder.
+2. Save the workspace via **File > Save Workspace As...** (this creates a `.code-workspace` file).
+3. For each folder, open it in the Explorer, then use **Python: Select Interpreter** to choose the correct venv for that folder.
+4. VS Code will remember the interpreter for each folder in the workspace.
+
+This setup makes switching between environments seamless and avoids manual interpreter changes.
 
 ## References
 

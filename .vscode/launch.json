@@ -3,10 +3,9 @@
     "configurations": [
         {
             "name": "Python: rugby-conversation",
-            "type": "python",
+            "type": "debugpy",
             "request": "launch",
             "program": "${workspaceFolder}/three-way-convos/rugby-conversation.py",
-            "pythonPath": "${workspaceFolder}/three-way-convos/venv/Scripts/python.exe",
             "envFile": "${workspaceFolder}/three-way-convos/.env"
         }
     ]
