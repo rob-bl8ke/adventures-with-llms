@@ -40,6 +40,42 @@ In VS Code, prefer the "Black Formatter" extension from Microsoft. Install the e
 }
 ```
 
+## Setting up a new subfolder project with its own venv
+
+1. Navigate to your subfolder (e.g., `three-way-convos`).
+2. Create a virtual environment:
+   ```powershell
+   python -m venv venv
+   venv\Scripts\activate
+   ```
+3. Install dependencies:
+   ```powershell
+   pip install -r requirements.txt
+   ```
+4. In VS Code, select the correct Python interpreter:
+   - Open Command Palette (`Ctrl+Shift+P`)
+   - Type and select **Python: Select Interpreter**
+   - Choose the interpreter from your subfolder's `venv` (e.g., `three-way-convos/venv/Scripts/python.exe`)
+5. Debugging:
+   - Use the provided `.vscode/launch.json` or run/debug directly from the subfolder.
+   - Ensure breakpoints are set and the correct interpreter is selected.
+
+## Setting environment variables for API keys
+
+- Create a `.env` file in your subfolder (e.g., `three-way-convos/.env`) and add your API key:
+  ```
+  OPENAI_API_KEY=your-key-here
+  ```
+- In your VS Code debug configuration (`.vscode/launch.json`), add:
+  ```json
+  "envFile": "${workspaceFolder}/three-way-convos/.env"
+  ```
+- This ensures your API key is available when running or debugging from the workspace directory.
+
+## Troubleshooting
+- If you see `ModuleNotFoundError`, make sure your virtual environment is activated and VS Code is using the correct interpreter.
+- You can always check which interpreter is active in the bottom left of VS Code.
+
 ## References
 
 - See [Getting Started with Python in VS Code](https://code.visualstudio.com/docs/python/python-tutorial) for more details on how setup and debug Python applications in VS Code.

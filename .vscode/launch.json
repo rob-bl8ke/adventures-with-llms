@@ -1,0 +1,13 @@
+{
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "name": "Python: rugby-conversation",
+            "type": "python",
+            "request": "launch",
+            "program": "${workspaceFolder}/three-way-convos/rugby-conversation.py",
+            "pythonPath": "${workspaceFolder}/three-way-convos/venv/Scripts/python.exe",
+            "envFile": "${workspaceFolder}/three-way-convos/.env"
+        }
+    ]
+}
