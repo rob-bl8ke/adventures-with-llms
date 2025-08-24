@@ -11,7 +11,8 @@ load_dotenv(override=True)
 # Initializing API Clients, loading the SDKs
 openai = OpenAI()
 claude = anthropic.Anthropic()
-ollama_via_openai = OpenAI(base_url='http://localhost:11434/v1', api_key = 'ollama')
+ollama_via_openai = OpenAI(base_url="http://localhost:11434/v1", api_key="ollama")
+
 
 # Conversation between GPT-4o-mini, Claude-3, ang Gemini 2.5 flash
 bok_model = "gpt-4o-mini"
@@ -41,61 +42,65 @@ allblack_system = "You are an All Black rugby die-hard supporter. \
     Your advantage is your wit, and quick tongue when challenged about your team."
 
 
-bok_messages = ["Hey Ous. There is no doubt that the Springboks are the best rugby team in the world."]
+bok_messages = [
+    "Hey Ous. There is no doubt that the Springboks are the best rugby team in the world."
+]
 wallaby_messages = ["Here we go again."]
 allblack_messages = ["I'm all ears, mate."]
 
+
 def get_bok_reply():
-    
-    messages = [{"role":"system", "content":bok_system}]
-    
+
+    messages = [{"role": "system", "content": bok_system}]
+
     for gpt, ollama, claude in zip(bok_messages, wallaby_messages, allblack_messages):
         messages.append({"role": "assistant", "content": gpt})
         messages.append({"role": "user", "content": ollama})
         messages.append({"role": "user", "content": claude})
-    
+
     response = openai.chat.completions.create(
-        model = bok_model,
-        messages = messages,
-        max_tokens = 500
+        model=bok_model, messages=messages, max_tokens=500
     )
     return response.choices[0].message.content.strip()
 
+
 def get_wallaby_reply():
-    messages = [{"role":"system", "content":wallaby_system}]
-    
-    for gpt, ollama_message, claude in zip(bok_messages, wallaby_messages, allblack_messages):
+    messages = [{"role": "system", "content": wallaby_system}]
+
+    for gpt, ollama_message, claude in zip(
+        bok_messages, wallaby_messages, allblack_messages
+    ):
         messages.append({"role": "user", "content": gpt})
         messages.append({"role": "assistant", "content": ollama_message})
         messages.append({"role": "user", "content": claude})
-    
-    messages.append({"role":"user", "content": bok_messages[-1]})
+
+    messages.append({"role": "user", "content": bok_messages[-1]})
 
     response = ollama_via_openai.chat.completions.create(
-            model = wallaby_model,
-            messages = messages
+        model=wallaby_model, messages=messages
     )
     return response.choices[0].message.content.strip()
 
+
 def get_allblack_reply():
-    
+
     messages = []
-    
-    for bok_reply, wallaby_reply, allblack_reply in zip(bok_messages, wallaby_messages, allblack_messages):
-        messages.append({"role":"user", "content":bok_reply})
+
+    for bok_reply, wallaby_reply, allblack_reply in zip(
+        bok_messages, wallaby_messages, allblack_messages
+    ):
+        messages.append({"role": "user", "content": bok_reply})
         messages.append({"role": "user", "content": wallaby_reply})
-        messages.append({"role":"assistant", "content": allblack_reply})
-    
+        messages.append({"role": "assistant", "content": allblack_reply})
+
     messages.append({"role": "user", "content": bok_messages[-1]})
     messages.append({"role": "user", "content": wallaby_messages[-1]})
-    
+
     response = claude.messages.create(
-        model = allblack_model,
-        system = allblack_system,
-        messages = messages,
-        max_tokens = 500
+        model=allblack_model, system=allblack_system, messages=messages, max_tokens=500
     )
     return response.content[0].text.strip()
+
 
 print(f"Frikkie (Springbok Supporter):\n{bok_messages[0]}\n")
 print(f"James (Wallaby Supporter):\n{wallaby_messages[0]}\n")
