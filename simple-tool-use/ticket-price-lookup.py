@@ -79,10 +79,16 @@ def chat(message, history):
 # We have to write that function handle_tool_call:
 def handle_tool_call(message):
     tool_call = message.tool_calls[0]
+    # More than one tool? then...
+    # if tool_call.function.name == "get_ticket_price":
+
     arguments = json.loads(tool_call.function.arguments)
     city = arguments.get("destination_city")
+
+    # call our tool
     price = get_ticket_price(city)
     response = {
+        # identify this as a tool role and the associated id
         "role": "tool",
         "content": json.dumps({"destination_city": city, "price": price}),
         "tool_call_id": tool_call.id,
