@@ -2,14 +2,35 @@
     "version": "0.2.0",
     "configurations": [
         {
-            "name": "Python: rugby-conversation",
+            "name": "rugby-conversation",
             "type": "debugpy",
             "request": "launch",
             "program": "${workspaceFolder}/three-way-convos/rugby-conversation.py",
             "envFile": "${workspaceFolder}/three-way-convos/.env"
         },
         {
-            "name": "Python: simple-tool-use",
+            "name": "sales-brochure-generator",
+            "type": "debugpy",
+            "request": "launch",
+            "program": "${workspaceFolder}/sales-brochure-generator/sales-brochure-generator.py",
+            "envFile": "${workspaceFolder}/sales-brochure-generator/.env"
+        },
+        {
+            "name": "analyzing-tokens",
+            "type": "debugpy",
+            "request": "launch",
+            "program": "${workspaceFolder}/analyzing-tokens/tokens.py",
+            "envFile": "${workspaceFolder}/analyzing-tokens/.env"
+        },
+        {
+            "name": "scrape-website",
+            "type": "debugpy",
+            "request": "launch",
+            "program": "${workspaceFolder}/scrape-website/website-scrape.py",
+            "envFile": "${workspaceFolder}/scrape-website/.env"
+        },
+        {
+            "name": "simple-tool-use",
             "type": "debugpy",
             "request": "launch",
             "program": "${workspaceFolder}/simple-tool-use/ticket-price-lookup.py",

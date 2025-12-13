@@ -1,0 +1,6 @@
+dotenv
+IPython
+scraper
+openai
+beautifulsoup4
+requests

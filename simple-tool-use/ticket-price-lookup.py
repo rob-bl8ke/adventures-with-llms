@@ -96,4 +96,6 @@ def handle_tool_call(message):
     return response, city
 
 
+# Set up the chat interface. The terminal will show you the correct
+# URL to navigate to begin interaction
 gr.ChatInterface(fn=chat, type="messages").launch()
