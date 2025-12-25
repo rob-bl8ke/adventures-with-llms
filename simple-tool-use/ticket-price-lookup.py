@@ -13,12 +13,12 @@ else:
     print("OpenAI API Key not set")
 
 
-MODEL = "gpt-4o-mini"
-openai = OpenAI()
+# MODEL = "gpt-4o-mini"
+# openai = OpenAI()
 # As an alternative, if you'd like to use Ollama instead of OpenAI
 # Check that Ollama is running for you locally (see week1/day2 exercise) then uncomment these next 2 lines
-# MODEL = "llama3.2"
-# openai = OpenAI(base_url='http://localhost:11434/v1', api_key='ollama')
+MODEL = "llama3.2"
+openai = OpenAI(base_url="http://localhost:11434/v1", api_key="ollama")
 
 
 system_message = "You are a helpful assistant for an Airline called FlightAI. "
@@ -98,4 +98,4 @@ def handle_tool_call(message):
 
 # Set up the chat interface. The terminal will show you the correct
 # URL to navigate to begin interaction
-gr.ChatInterface(fn=chat, type="messages").launch()
+gr.ChatInterface(fn=chat, type="messages").launch(inbrowser=True)
