@@ -1,0 +1,9 @@
+anthropic
+beautifulsoup4
+dotenv
+gradio
+IPython
+ollama
+openai
+requests
+tiktoken

@@ -1,6 +1,0 @@
-scraper
-IPython
-openai
-dotenv
-bs4
-requests
